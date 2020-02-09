@@ -1,14 +1,18 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>MICorona</title>
+    <meta http-equiv=”Refresh” content=”0; URL=https://www.micorona.site”/>
     <meta property="og:title" content="코로나지도"/>
     <meta name="description" content="코로나 지도 : 코로나바이러스의 국내 현황을 알려주는 지도 서비스입니다." />
     <meta property="og:type" content="website" />
     <meta property="og:description" content="코로나 맵 : 코로나바이러스의 국내 현황을 알려주는 지도 서비스입니다." />
-    <meta property="og:url" content="www.micorona.site" />
+    <meta property="og:url" content="https://www.micorona.site/" />
     <meta name="Robots" content="INDEX, FOLLOW" />
+    <meta property="og:image" href="https://micorona.site/image/virus.png">
+    <link rel="shortcut icon" href="https://micorona.site/image/virus.png">
+    <link rel="canonical" href="https://micorona.site/">
 	<style>
 		html, body {width:100%;height:100%;margin:0;padding:0;} 
 		.map_wrap {position:relative;overflow:hidden;width:100%;height:100%;}
@@ -29,33 +33,33 @@
 		.wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
 		.wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
 		.info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
-		.info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+		.info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('//t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
 		.info .close:hover {cursor: pointer;}
 		.info .body {position: relative;overflow: hidden;}
 		.info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
 		.desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 		.desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
 		.info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
-		.info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+		.info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('//t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 		.info .link {color: #5085BB;}    
 		#mapwrap{position:relative;overflow:hidden;}
 		.category, .category *{margin:0;padding:0;color:#000;}   
-		.category {position:absolute;overflow:hidden;top:10px;left:10px;width:80px;height:70px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:20px;text-align:center;background-color:#fff;}
+		.category {position:absolute;overflow:hidden;top:10px;left:10px;width:100px;height:80px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:27px;text-align:center;background-color:#fff;}
 		.category .menu_selected {background:#FF5F4A;color:#fff;border-left:1px solid #915B2F;border-right:1px solid #915B2F;margin:0 -1px;} 
 		.category li{list-style:none;float:left;width:50px;height:45px;padding-top:5px;cursor:pointer;}   
 		#mapwrap{position:relative;overflow:hidden;}
 		.category2, .category2 *{margin:0;padding:0;color:#000;}   
-		.category2 {position:absolute;overflow:hidden;top:100px;left:10px;width:80px;height:70px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:20px;text-align:center;background-color:#fff;}
+		.category2 {position:absolute;overflow:hidden;top:100px;left:10px;width:100px;height:80px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:27px;text-align:center;background-color:#fff;}
 		.category2 .menu_selected {background:#FF5F4A;color:#fff;border-left:1px solid #915B2F;border-right:1px solid #915B2F;margin:0 -1px;} 
 		.category2 li{list-style:none;float:left;width:50px;height:45px;padding-top:5px;cursor:pointer;} 
 		#mapwrap{position:relative;overflow:hidden;}
 		.category3, .category3 *{margin:0;padding:0;color:#000;}   
-		.category3 {position:absolute;overflow:hidden;top:190px;left:10px;width:80px;height:70px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:20px;text-align:center;background-color:#fff;}
+		.category3 {position:absolute;overflow:hidden;top:190px;left:10px;width:100px;height:80px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:27px;text-align:center;background-color:#fff;}
 		.category3 .menu_selected {background:#FF5F4A;color:#fff;border-left:1px solid #915B2F;border-right:1px solid #915B2F;margin:0 -1px;} 
 		.category3 li{list-style:none;float:left;width:50px;height:45px;padding-top:5px;cursor:pointer;} 
 		#mapwrap{position:relative;overflow:hidden;}
 		.category4, .category4 *{ margin:0;padding:0;color:#000;}   
-		.category4 {position:absolute;overflow:hidden;bottom:0px;right:0px;width:100%;height:130px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:15px;text-align:center;background-color:#fff;}
+		.category4 {position:absolute;overflow:hidden;bottom:0px;right:0px;width:100%;height:170px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:20px;text-align:center;background-color:#fff;}
 		.category4 .menu_selected {background:#FF5F4A;color:#fff;border-left:1px solid #915B2F;border-right:1px solid #915B2F;margin:0 -1px;} 
 		.category4 li{list-style:none;float:left;width:50px;height:45px;padding-top:5px;cursor:pointer;} 
         
@@ -80,8 +84,8 @@
 		 -->
 		<!-- 지도 확대, 축소 컨트롤 div 입니다 -->
 		<div class="custom_zoomcontrol radius_border"> 
-			<span onclick="zoomIn()"><img src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png" alt="확대"></span>  
-			<span onclick="zoomOut()"><img src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
+			<span onclick="zoomIn()"><img src="//t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png" alt="확대"></span>  
+			<span onclick="zoomOut()"><img src="//t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
 		</div>
 	</div>
 
@@ -91,7 +95,7 @@
 	<div class="category">
         <ul>
 			<p><em>확진자</em></p>
-			<p><em>24</em></p>
+			<p><em>27</em></p>
             
         </ul>
 	</div>
@@ -99,7 +103,7 @@
 	<div class="category2">
         <ul>
 			<p><em>격리중</em></p>
-			<p><em>327</em></p>
+			<p><em>888</em></p>
             
         </ul>
 	</div>
@@ -107,14 +111,14 @@
 	<div class="category3">
         <ul>
 			<p><em>완치!!</em></p>
-			<p><em>2</em></p>
+			<p><em>3</em></p>
             
         </ul>
 	</div>
 
 	<div class="category4">
         <ul>
-            <p><em>2020.02.07 20시 기준</em></p>
+            <p><em>2020.02.09 17시 기준 질병관리본부출처</em></p>
             <p><em>.</em></p>
 			
 			<p><em>0~14일 - 선명(위험지역) </em></p>
@@ -133,13 +137,33 @@
 		<button onclick="showMarkers()">확진지역</button>
 		<button onclick="showMarkers()">진료소</button>
 	</p> 
-	-->
+    -->
+    <script language="JavaScript">
+        function redirectHttpToHttps()
+        {
+            var httpURL= window.location.hostname + window.location.pathname + window.location.search;
+            var httpsURL= "https://" + httpURL;
+            window.location = httpsURL;
+        }
+    //    redirectHttpToHttps();
+        </script>
+
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=64fc44ee2d1f19b99a05f91bcd4c094e"></script>
 	<script>
+
+        
+
+     
+               
+               
+            
+   
+
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng( 37.52182391251558 , 126.92418527090074), // 지도의 중심좌표
         level: 7 // 지도의 확대 레벨
+
     };
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
@@ -745,6 +769,12 @@ var positions = [
         latlng: new kakao.maps.LatLng(37.586310136571726, 126.9997084583241),
 		date : "2020-01-29"
 		
+    },
+    {
+        title: 'gs 강서타워',
+        latlng: new kakao.maps.LatLng(37.52078256720164, 126.88911600482646),
+		date : "2020-02-01"
+		
     },/////////////////////////////////////////////////////////////////20끝
     {
         title: '프레지던트호텔',
@@ -761,6 +791,12 @@ var positions = [
     {
         title: '이마트 마포공덕점',
         latlng: new kakao.maps.LatLng(37.54246526224102, 126.95350513263318),
+		date : "2020-02-02"
+		
+    },
+    {
+        title: '플리츠플리즈,텍스 리펀드,창화루',
+        latlng: new kakao.maps.LatLng(37.564813266145066, 126.98186452868315),
 		date : "2020-02-02"
 		
     }/////////////////////////////////////////////////////////////////23끝
@@ -846,19 +882,19 @@ function zoomOut() {
 
 
 
-var imageSrc = 'http://www.micorona.site/micorona/image/ban.png', // 마커이미지의 주소입니다 
-//var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다 
-    imageSize = new kakao.maps.Size(54, 59), // 마커이미지의 크기입니다
+var imageSrc = '//www.micorona.site/micorona/image/ban.png', // 마커이미지의 주소입니다 
+//var imageSrc = '//t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다 
+    imageSize = new kakao.maps.Size(74, 79), // 마커이미지의 크기입니다
     imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
 
-	var imageSrc2 = 'http://www.micorona.site/micorona/image/ban4.png', // 마커이미지의 주소입니다 
-//var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다 
-    imageSize2 = new kakao.maps.Size(34, 39), // 마커이미지의 크기입니다
+	var imageSrc2 = '//www.micorona.site/micorona/image/ban4.png', // 마커이미지의 주소입니다 
+//var imageSrc = '//t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다 
+    imageSize2 = new kakao.maps.Size(44, 49), // 마커이미지의 크기입니다
     imageOption2 = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
-	var imageSrc3 = 'http://www.micorona.site/micorona/image/clear.png', // 마커이미지의 주소입니다 
-//var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다 
+	var imageSrc3 = '//www.micorona.site/micorona/image/clear.png', // 마커이미지의 주소입니다 
+//var imageSrc = '//t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다 
     imageSize3 = new kakao.maps.Size(0, 0), // 마커이미지의 크기입니다
     imageOption3 = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
@@ -884,7 +920,7 @@ var imageSrc = 'http://www.micorona.site/micorona/image/ban.png', // 마커이�
   //  var imageSize = new kakao.maps.Size(24, 35); 
     
 	
-
+    
     // 마커 이미지를 생성합니다    
 	if(diffDays<14)
     var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
@@ -920,7 +956,29 @@ var imageSrc = 'http://www.micorona.site/micorona/image/ban.png', // 마커이�
 	infowindow.setContent(content); 
 
 
-	
+
+ // 마커에 mouseover 이벤트를 등록합니다
+ kakao.maps.event.addListener(marker, 'mouseover', function() {
+
+// 클릭된 마커가 없고, mouseover된 마커가 클릭된 마커가 아니면
+// 마커의 이미지를 오버 이미지로 변경합니다
+if (!selectedMarker || selectedMarker !== marker) {
+    marker.setImage(overImage);
+}
+});
+
+// 마커에 mouseout 이벤트를 등록합니다
+kakao.maps.event.addListener(marker, 'mouseout', function() {
+
+// 클릭된 마커가 없고, mouseout된 마커가 클릭된 마커가 아니면
+// 마커의 이미지를 기본 이미지로 변경합니다
+if (!selectedMarker || selectedMarker !== marker) {
+    marker.setImage(normalImage);
+}
+});
+
+
+
  // 마커에 click 이벤트를 등록합니다
  kakao.maps.event.addListener(marker, 'click', function() {
 
