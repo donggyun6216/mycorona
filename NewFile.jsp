@@ -24,7 +24,7 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e1d21be3b2b96bd5dbe554096f56ac18&libraries=services"></script>
 
 <script>
-	//Change for test
+	//Change for test22222
 	//마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
 	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
